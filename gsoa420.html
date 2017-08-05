@@ -11,29 +11,18 @@
         <img src="http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/logo" alt="logo" style="width:128px;height:128px;">
         <div class="dropdown">
         <div class="topnav" id="myTopnav">
-            <a href="#home"onclick='document.getElementById("displayText").innerHTML = "This is home"'>Home</a>
-<!--             <a href="#AboutSection"onclick="showAboutSection()">About</a>
-            <a href="#BookSection"onclick="showBookSection()">Books</a>
-            <a href="#BluraySection"onclick="showBluraySection()">Blurays</a>
-            <a href="#comments"onclick="showCommentSection()">Comments</a> -->
-            <a href="#AboutSection"onclick='document.getElementById("displayText").innerHTML = "This is about"'>About</a>
-            <a href="#BookSection"onclick='document.getElementById("displayText").innerHTML = "This is books"'>Books</a>
-            <a href="#BluraySection"onclick='document.getElementById("displayText").innerHTML = "This is blurays"'>Blurays</a>
-            <a href="#comments"onclick='document.getElementById("displayText").innerHTML = "This is comments"'>Comments</a>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+            <a onclick='home()'>Home</a>
+            <a onclick='document.getElementById("displayText").innerHTML = "This is about"'>About</a>
+            <a onclick='getBooks()'>Books</a>
+            <a onclick='getBlurays()'>Blurays</a>
+            <a onclick='document.getElementById("displayText").innerHTML = "This is comments"'>Comments</a>
+            
         </div>
-        <!-- <table id="MainTable">
-            <tbody id="BodyRows"></tbody>
-            </table> -->
-        <!-- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
-            -->
         <div id = "displayText">
-            <!-- h1 class="text">La Boutique Cassée</h1> 
-                <hr /> -->
             This will change
         </div>
         <div>
-            <p class="foot">Copyright &#169; Gaby</p>
+            <p class="foot">Copyright &#169; Gabriella Soares</p>
         </div>
     </body>
 </html>

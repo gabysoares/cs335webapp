@@ -1,3 +1,99 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>La Boutique Cassée</title>
+        <script type="text/javascript">
+            window.onload = getBooks()
+        </script>
+<!--         <link rel="stylesheet" type="text/css" href="gsoa420.css"/>
+        <script src="gsoa420.js"></script> -->
+        <style>
+hr {border-width: 2px; border-style: solid; color:white;}
+body { background-image: url("bg.png");
+background-attachment: fixed;}
+table{width: 100%;
+table-layout: fixed; border-spacing: 10px;}
+td, th {color:white;}
+.text{ color: white;}
+.foot{color: white;
+        bottom: 0px;
+        text-align: center;}
+
+
+.topnav {
+    background-color: #0F487E;
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+    display: none;
+}
+
+
+table {
+        }
+        td {
+            padding: 2px;
+            border: 1px solid #dadada;
+        }
+        .EvenRow {
+            background-color: lightgrey;
+        }
+
+#myInput {
+    background-image: url('/css/searchicon.png'); /* Add a search icon to input */
+    background-position: 10px 12px; /* Position the search icon */
+    background-repeat: no-repeat; /* Do not repeat the icon image */
+    width: 100%; /* Full-width */
+    font-size: 16px; /* Increase font-size */
+    padding: 12px 20px 12px 40px; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+    margin-bottom: 12px; /* Add some space below the input */
+}
+
+
+        </style>
+        
+    </head>
+    <body>
+    <!-- <p id="demo">JavaScript can change HTML content.</p> -->
+        <img src="http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/logo" alt="logo" style="width:128px;height:128px;">
+        <div class="dropdown">
+        <div class="topnav" id="myTopnav">
+            <a onclick='home()'>Home</a>
+            <a onclick='document.getElementById("displayText").innerHTML = "This is about"'>About</a>
+            <a onclick='getBooks()'>Books</a>
+            <a onclick='getBlurays()'>Blurays</a>
+            <a onclick='document.getElementById("displayText").innerHTML = "This is comments"'>Comments</a>
+            
+        </div>
+        <div id = "displayText">
+            This will change
+        </div>
+        <div>
+            <p class="foot">Copyright &#169; Gabriella Soares</p>
+        </div>
+    </body>
+    <script>
 function home()
 {
   var str = "<h1 style='color:white;'>La Boutique Cassée</h1> <hr style = 'border-width: 2px; border-style: solid; color:white;'></hr> <p style='color:white;'> Welcome to La Boutique Cassée. La Boutique Cassée is an online shop selling books and blurays.</p>";
@@ -142,3 +238,6 @@ function comments()
     document.getElementById("displayText").innerHTML = tableContent;
 
   }
+
+    </script>
+</html>
