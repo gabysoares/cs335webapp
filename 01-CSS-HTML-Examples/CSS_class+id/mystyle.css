@@ -1,0 +1,3 @@
+#allCourses      { background-color: cornflowerblue; }
+#selectedCourses { background-color: yellow; transform: rotate(180deg); }
+.course          { color: blue; }

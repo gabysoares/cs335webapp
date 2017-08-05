@@ -1,0 +1,88 @@
+﻿<html>
+<head>
+   <title>Tab Example</title>
+   <script type="text/javascript">
+      var currentTab = "";
+      function showTabA() {
+         if (currentTab != "TabA") {
+            currentTab = "TabA";
+            showNoTabs();
+            document.getElementById("TabA").style.backgroundColor = "lightBlue";
+            document.getElementById("SectionA").style.display = "inline";
+         }
+      }
+
+      function showTabB() {
+         if (currentTab != "TabB") {
+            currentTab = "TabB";
+            showNoTabs();
+            document.getElementById("TabB").style.backgroundColor = "lightBlue";
+            document.getElementById("SectionB").style.display = "inline";
+         }
+      }
+
+      function showTabC() {
+         if (currentTab != "TabC") {
+            currentTab = "TabC";
+            showNoTabs();
+            document.getElementById("TabC").style.backgroundColor = "lightBlue";
+            document.getElementById("SectionC").style.display = "inline";
+         }
+      }
+
+      function showNoTabs() {
+         document.getElementById("TabA").style.backgroundColor = "transparent";
+         document.getElementById("TabB").style.backgroundColor = "transparent";
+         document.getElementById("TabC").style.backgroundColor = "transparent";
+
+         document.getElementById("SectionA").style.display = "none";
+         document.getElementById("SectionB").style.display = "none";
+         document.getElementById("SectionC").style.display = "none";
+      }
+
+      window.onload = function () {
+         showTabA();
+      }
+   </script>
+</head>
+<body>
+   <header>
+      <table style="width: 100%;">
+         <tr>
+            <td id="TabA" class="center" onclick="showTabA();">
+               Tab A
+            </td>
+            <td id="TabB" class="center" onclick="showTabB();">
+               Tab B
+            </td>
+            <td id="TabC" class="center" onclick="showTabC();">
+               Tab C
+            </td>
+         </tr>
+      </table>
+      <hr />
+      <hr />
+   </header>
+   <div id="SectionA">
+      <section>
+         <p>
+            A Section
+         </p>
+      </section>
+   </div>
+   <div id="SectionB">
+      <section>
+         <p>
+            B Section
+         </p>
+      </section>
+   </div>
+   <div id="SectionC">
+      <section>
+         <p>
+            C Section
+         </p>
+      </section>
+   </div>
+</body>
+</html>

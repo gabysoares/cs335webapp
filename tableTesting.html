@@ -1,0 +1,114 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+<title>La Boutique Cassée</title>
+
+<style type = "text/css">
+hr {border-width: 2px; border-style: solid; color:white;}
+body { background-image: url("background.jpg");
+background-attachment: fixed;}
+table{width: 100%;
+table-layout: fixed; border-spacing: 10px;}
+td, th {color:white;}
+.text{ color: white;}
+.foot{color: white;
+        bottom: 0px;
+        text-align: center;}
+.dropbtn {
+    background-color: #0F487E;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;}
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #1663aa;
+    cursor: pointer;}
+.dropdown {
+    float: right;
+    right: 0;
+    position: fixed;
+    display: inline-block;}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #1663aa;
+    min-width: 160px; 
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    right: 0;}
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;}
+.dropdown a:hover {background-color: #298ce8}
+.show {display:block;}
+</style>
+
+
+</head>
+<body>
+<img src="http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/logo" alt="logo" style="width:128px;height:128px;">
+<div class="dropdown">
+<button onclick="myDrop()" class="dropbtn" style="font-size:20px"> &#8801; </button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="#Home" onclick="home()">Home</a>
+    <a href="#Blurays" onclick="blurays()">Blurays</a>
+    <a href="#Books" onclick="books()">Books</a>
+    <a href="#Register" onclick="register()">Register</a>
+    <a href="#Comments" onclick="comments()">Leave a comment</a>
+  </div>
+</div>
+<script>
+function myDrop() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+    function books(){
+    //var str ="<h1 style='color:white;'>Courses</h1> <hr style = 'border-width: 2px; border-style: solid; color:white;'></hr>";
+    var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/booklist";
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET",uri,true);
+    xhr.onload = function(){
+        var books = JSON.parse(xhr.responseText);
+        showCourses(books);
+        //document.getElementById("menu").innerHTML =response.courses.coursePaperSection;
+    }
+    xhr.send(null);
+    //document.getElementById("menu").innerHTML =str;
+}
+
+function showCourses(books){
+    var table = "<h1 style='color:white;'>Books</h1><hr style = 'border-width: 2px; border-style: solid; color:white;'></hr>";
+    for (var i = 0; i <books.length; ++i){
+        var book = books[i];
+        title = book.Title;
+        authorName = book.AuthorInitials;
+        authorSurname = book.AuthorSurname;
+        bookID = book.ID;
+
+        if (title == ""){
+            title = " - ";
+        }
+        table += "<table><tr><td>"+Title+ "</td>" + "<td>"+authorName+ "</td>"+ "<td style= 'text-align: right;'>"+points+ "</td></tr><tr><td colspan= '3'>"+authorSurname+ "</td></tr><tr><td colspan= '3'>"+bookID+ "</td></tr></table>\n";
+        table += "<hr style = 'width:50%;border-width: 1px; border-style: solid; color:white;'></hr>";
+    }
+    document.getElementById("menu").innerHTML = table;
+}
+</script>
+</html>

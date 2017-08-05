@@ -1,0 +1,147 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+<title>La Boutique Cassée</title>
+
+<style type = "text/css">
+hr {border-width: 2px; border-style: solid; color:white;}
+body { background-image: url("background.jpg");
+background-attachment: fixed;}
+table{width: 100%;
+table-layout: fixed; border-spacing: 10px;}
+td, th {color:white;}
+.text{ color: white;}
+.foot{color: white;
+        bottom: 0px;
+        text-align: center;}
+.dropbtn {
+    background-color: #0F487E;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;}
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #1663aa;
+    cursor: pointer;}
+.dropdown {
+    float: right;
+    right: 0;
+    position: fixed;
+    display: inline-block;}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #1663aa;
+    min-width: 160px; 
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    right: 0;}
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;}
+.dropdown a:hover {background-color: #298ce8}
+.show {display:block;}
+</style>
+
+
+</head>
+<body>
+<img src="http://redsox.tcs.auckland.ac.nz/BC/Open/Service.svc/logo" alt="logo" style="width:128px;height:128px;">
+<div class="dropdown">
+<button onclick="myDrop()" class="dropbtn" style="font-size:20px"> &#8801; </button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="#Home" onclick="home()">Home</a>
+    <a href="#Blurays" onclick="blurays()">Blurays</a>
+    <a href="#Books" onclick="getBooks()">Books</a>
+    <a href="#Register" onclick="register()">Register</a>
+    <a href="#Comments" onclick="comments()">Leave a comment</a>
+  </div>
+</div>
+<script>
+function myDrop() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+function home(){
+    var str ="<h1 style='color:white;'>La Boutique Cassée</h1> <hr style = 'border-width: 2px; border-style: solid; color:white;'></hr> <p style='color:white;'> Welcome to La Boutique Cassée. La Boutique Cassée is an online shop selling books and blurays.</p>";
+    document.getElementById("menu").innerHTML = str;
+}
+         
+
+function getBooks() {
+        var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/booklist";
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", uri, true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.setRequestHeader("Accept", "application/json");
+        xhr.onload = function() {
+            var resp = JSON.parse(xhr.responseText);
+            displayBooks(resp.value);
+        }
+        xhr.send(null);
+    }
+    function displayBooks(dest) {
+    var tableContent = "<tr class='Title'><td>Id</td></tr>\n";
+   for (var i = 0; i < dest.length; ++i) {
+      var record = dest[i];
+      if (i & 1 == 1) { // odd row
+         tableContent += "<tr class='orderOdd'>";
+      }
+      else { // even row
+         tableContent += "<tr class='orderEven'>";
+      }
+      tableContent += "<td>" + record.ID + "</td><td>" + Title + "</td></tr>\n";
+    tableContent += "<table><tr><th rowspan='2'>"+image+"</th><th>"+ book.AuthorInitial+" "+book.Surname+"</th></tr></table>";
+        table += "<hr style = 'width:50%;border-width: 1px; border-style: solid; color:white;'></hr>";
+    }
+    document.getElementById("menu").innerHTML = tableContent;  
+}
+
+function comments(){
+    var str ="<h1 style='color:white;'>Guest Book</h1> <hr style = 'border-width: 2px; border-style: solid; color:white;'></hr> <p style = 'color:white;'>Please sign our guest book. Your comments are greatly appreciated</p><div><table style= 'background-color: #323232; padding: 15px; border-radius:25px; width:100%;' align='center'> <tr><td colspan='3'><textarea id='text' rows='6' cols='50' style= 'width:100%'></textarea></td></tr><tr><td style= 'text-align: center;'> Your Name:</td><td style= 'text-align: center;'> <input id='name' type='text' name='name' placeholder='Enter your name here'></td><td style= 'text-align: center;' onclick='showcomments()'>button</td></tr></table></div>";
+    document.getElementById("menu").innerHTML =str;
+    var yourname = document.getElementById("name").value;
+    var yourtext = document.getElementById("text").value;
+    var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/comment?name={NAME}";
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST",uri,true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.onload = function () {
+    }
+    xhr.send(JSON.stringify(objectToPost));
+
+}
+function showcomments(){
+
+}
+
+</script>
+
+<div id = "menu">
+<h1 class="text">La Boutique Cassée</h1> 
+<hr />
+<p class="text">Paragraph text
+</p>
+</div>
+<div>
+<p class="foot">Copyright &#169; Gaby</p>
+</div>
+</body>
+</html>
