@@ -137,7 +137,7 @@ function comments()
         tableContent += "<trclass='orderEven'>";
       }
 
-      tableContent += "<td><img src='http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/bookimg?id=" + record.Id + "'/><figcaption>" + record.AuthorInitials + " " + record.AuthorSurname + "</figcaption><figcaption>" + record.Title + "</figcaption></td>";
+      tableContent += "<td><img src='http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/brimg?id=" + record.Id + "'/><figcaption>" + record.AuthorInitials + " " + record.AuthorSurname + "</figcaption><figcaption>" + record.Title + "</figcaption></td>";
     }
     document.getElementById("displayText").innerHTML = tableContent;
 
