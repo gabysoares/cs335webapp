@@ -46,6 +46,20 @@ function postComment()
 }
 
 
+  // function getBooks()
+  // {
+  //   var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/booklist";
+  //   var xhr = new XMLHttpRequest();
+  //   xhr.open("GET", uri, true);
+  //   xhr.setRequestHeader("Accept", "application/json");
+  //   xhr.onload = function()
+  //   {
+  //     var response = JSON.parse(xhr.responseText);
+  //     showBooks(response);
+  //   }
+  //   xhr.send(null);
+  // }
+
   function getBooks()
   {
     var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/booklist";
@@ -74,40 +88,25 @@ function postComment()
     xhr.send(null);
   }
 
-//   function showBooks(books)
-//   {
-//     var tableContent = "";
-//     for (var i = 0; i < books.length; ++i)
-//     {
-//       var record = books[i];
-
-//       // if (i & 1 == 1)
-//       // { // odd row
-//       //   tableContent += "<trclass='orderOdd'>";
-//       // }
-
-//       // else
-//       // { // even row
-//       //   tableContent += "<trclass='orderEven'>";
-//       // }
-
+  function showBooks(books)
+  {	
+  	debugger;
+    var tableContent = "<table>";
+    for (var i = 0; i < books.length; ++i)
+    {
+      var record = books[i];
      
-// 	tableContent +=  '<td>'+
-// '	"<td><img src='http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/brimg?id=" + record.Id + 
-//       "'/></td>"
-// '</td>'+
-// '<td>'+
-// '	record.AuthorInitials + " " + record.AuthorSurname + "-"+ record.Title'+
-// '</td>'+
-// '<td> '+
-// '	<button type="button" onclick="alert(\'Hello world!\')">Buy Now!</button>'+
-// '</td>'+
-// '<br/>';
-	
-//     }
-//     document.getElementById("displayText").innerHTML = tableContent;
+     var name =record.AuthorInitials + " " + record.AuthorSurname;
 
-//  }
+     tableContent += "<tr> <td><img src='http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/bookimg?id=" + record.Id + 
+      "' </td>" +"<td>" + record.Title + "<br/>" + name + 
+      "</td>" + "<td> <button type=\"button\" onclick=\"alert('Hello world!')\">Buy Now!</button></td>"+"</tr>";
+	
+    }
+     tableContent += "</table>"
+    document.getElementById("displayText").innerHTML = tableContent;
+
+ }
 
   function getBlurays()
   {
@@ -144,14 +143,14 @@ function postComment()
     {
       var record = blurays[i];
 
- 
+
 
       tableContent += "<tr> <td><img src='http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/brimg?id=" + record.Id + 
       "' </td>" +"<td>" + record.Title + 
       "</td>" + "<td> <button type=\"button\" onclick=\"alert('Hello world!')\">Buy Now!</button></td>"+"</tr>";
     }
     tableContent += "</table>"
-    debugger;
+    
     document.getElementById("displayText").innerHTML = tableContent;
 
   }
