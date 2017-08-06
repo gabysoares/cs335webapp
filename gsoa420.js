@@ -32,13 +32,18 @@ function comments()
 
 }
 
-// function postComments()
-// {
-//   varxhr = newXMLHttpRequest();
-//   varuri = "http://www.site.org/";
-//   xhr.open("POST", uri, true);
-//   xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-//   xhr.onload = function()
+function postComment()
+{
+  var xhr = new XMLHttpRequest();
+  var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/comment?name=" + '"testing"';
+  xhr.open("POST", uri, true);
+  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhr.onload = function(){
+  	var comment = document.getElementById("displayText");
+  	comment.innerHTML= xhr.responseText;
+  }
+  xhr.send("TESTING COMMENT")
+}
 
 
   function getBooks()
@@ -69,28 +74,40 @@ function comments()
     xhr.send(null);
   }
 
-  function showBooks(books)
-  {
-    var tableContent = "";
-    for (var i = 0; i < books.length; ++i)
-    {
-      var record = books[i];
+//   function showBooks(books)
+//   {
+//     var tableContent = "";
+//     for (var i = 0; i < books.length; ++i)
+//     {
+//       var record = books[i];
 
-      if (i & 1 == 1)
-      { // odd row
-        tableContent += "<trclass='orderOdd'>";
-      }
+//       // if (i & 1 == 1)
+//       // { // odd row
+//       //   tableContent += "<trclass='orderOdd'>";
+//       // }
 
-      else
-      { // even row
-        tableContent += "<trclass='orderEven'>";
-      }
+//       // else
+//       // { // even row
+//       //   tableContent += "<trclass='orderEven'>";
+//       // }
 
-      tableContent += "<td><img src='http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/bookimg?id=" + record.Id + "'/><figcaption>" + record.AuthorInitials + " " + record.AuthorSurname + "</figcaption><figcaption>" + record.Title + "</figcaption></td>";
-    }
-    document.getElementById("displayText").innerHTML = tableContent;
+     
+// 	tableContent +=  '<td>'+
+// '	"<td><img src='http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/brimg?id=" + record.Id + 
+//       "'/></td>"
+// '</td>'+
+// '<td>'+
+// '	record.AuthorInitials + " " + record.AuthorSurname + "-"+ record.Title'+
+// '</td>'+
+// '<td> '+
+// '	<button type="button" onclick="alert(\'Hello world!\')">Buy Now!</button>'+
+// '</td>'+
+// '<br/>';
+	
+//     }
+//     document.getElementById("displayText").innerHTML = tableContent;
 
-  }
+//  }
 
   function getBlurays()
   {
@@ -106,7 +123,7 @@ function comments()
     xhr.send(null);
   }
 
-  function showBlurays(keyword)
+  function searchBlurays(keyword)
   {
     var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/brsearch?term=" + keyword;
     var xhr = new XMLHttpRequest();
@@ -121,7 +138,7 @@ function comments()
   }
 
   function showBlurays(blurays)
-  {
+  {	
     var tableContent = "";
     for (var i = 0; i < blurays.length; ++i)
     {
@@ -136,8 +153,10 @@ function comments()
       { // even row
         tableContent += "<trclass='orderEven'>";
       }
-
-      tableContent += "<td><img src='http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/brimg?id=" + record.Id + "'/><figcaption>" + record.AuthorInitials + " " + record.AuthorSurname + "</figcaption><figcaption>" + record.Title + "</figcaption></td>";
+		
+ 	tableContent += "<td><img src='http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/brimg?id=" + record.Id + 
+      "'/></td>" +"<td class=\"centerText\">" + record.Title + 
+      "</td>" + "<td> <button type=\"button\" onclick=\"alert('Hello world!')\">Buy Now!<\/button><\/td>"+"<br/>";
     }
     document.getElementById("displayText").innerHTML = tableContent;
 

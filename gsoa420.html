@@ -1,30 +1,27 @@
 <!DOCTYPE html> 
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>La Boutique Cassée</title>
-        <link rel="stylesheet" type="text/css" href="gsoa420.css"/>
-        <script src="gsoa420.js"></script>
-        <style>
-        
-    </head>
-    <body>
-    <!-- <p id="demo">JavaScript can change HTML content.</p> -->
-        <img src="http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/logo" alt="logo" style="width:128px;height:128px;">
-        <div class="dropdown">
-        <div class="topnav" id="myTopnav">
-            <a onclick='home()'>Home</a>
-            <a onclick='document.getElementById("displayText").innerHTML = "This is about"'>About</a>
-            <a onclick='getBooks()'>Books</a>
-            <a onclick='getBlurays()'>Blurays</a>
-            <a onclick='document.getElementById("displayText").innerHTML = "This is comments"'>Comments</a>
-            
-        </div>
-        <div id = "displayText">
-            This will change
-        </div>
-        <div>
-            <p class="foot">Copyright &#169; Gabriella Soares</p>
-        </div>
-    </body>
+   <head>
+      <meta charset="utf-8">
+      <title>La Boutique Cassée</title>
+      <link rel="stylesheet" type="text/css" href="gsoa420.css"/>
+      <script src="gsoa420.js"></script>
+   </head>
+   <body>
+      <!-- <p id="demo">JavaScript can change HTML content.</p> -->
+      <img src="http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/logo" alt="logo" style="width:128px;height:128px;">
+  
+      <div class="topnav" id="myTopnav">
+         <a onclick='home()'>Home</a>
+         <a onclick='document.getElementById("displayText").innerHTML = "This is about"'>About</a>
+         <a onclick='getBooks()'>Books</a>
+         <a onclick='getBlurays()'>Blurays</a>
+         <a onclick='postComment()''>Comments</a>
+      </div>
+      <div id = "displayText">
+         This will change
+      </div>
+      <div>
+         <p class="foot">Copyright &#169; Gabriella Soares</p>
+      </div>
+   </body>
 </html>

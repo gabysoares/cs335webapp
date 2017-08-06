@@ -37,7 +37,7 @@ td, th {color:white;}
     display: none;
 }
 
-
+/*
 table {
         }
         td {
@@ -46,7 +46,7 @@ table {
         }
         .EvenRow {
             background-color: lightgrey;
-        }
+        }*/
 
 #myInput {
     background-image: url('/css/searchicon.png'); /* Add a search icon to input */
@@ -59,3 +59,6 @@ table {
     margin-bottom: 12px; /* Add some space below the input */
 }
 
+.centerText{
+   text-align: center;
+}
