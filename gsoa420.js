@@ -100,7 +100,7 @@ function postComment()
 
      tableContent += "<tr> <td><img src='http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/bookimg?id=" + record.Id + 
       "' </td>" +"<td>" + record.Title + "<br/>" + name + 
-      "</td>" + "<td> <button type=\"button\" onclick=\"buyBook(this)\" value= '" + record.Title + "'\">Buy Now!</button></td>"+"</tr>";
+      "</td>" + "<td> <button type=\"button\" onclick=\"buyBook(this)\" value= '" + record.Id + "'\">Buy Now!</button></td>"+"</tr>";
 	
     }
      tableContent += "</table>"
