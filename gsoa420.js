@@ -17,20 +17,63 @@ function myFunction()
   }
 }
 
-function comments()
-{
-  var str = "<h1 style='color:white;'>Guest Book</h1> <p style = 'color:white;'>Please sign our guest book. Your comments are greatly appreciated</p><div><table style= 'background-color: #323232; padding: 15px; border-radius:25px; width:100%;' align='center'> <tr><td colspan='3'><textarea id='text' rows='6' cols='50' style= 'width:100%'></textarea></td></tr><tr><td style= 'text-align: center;'> Your Name:</td><td style= 'text-align: center;'> <input id='name' type='text' name='name' placeholder='Enter your name here'></td><td style= 'text-align: center;' onclick='showcomments()'>button</td></tr></table></div>";
-  document.getElementById("menu").innerHTML = str;
-  var yourname = document.getElementById("name").value;
-  var yourtext = document.getElementById("text").value;
-  var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/comment?name={NAME}";
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", uri, true);
-  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-  xhr.onload = function() {}
-  xhr.send(JSON.stringify(objectToPost));
+// function comments()
+// {
+//   var str = "<h1 style='color:white;'>Guest Book</h1> <p style = 'color:white;'>Please sign our guest book. Your comments are greatly appreciated</p><div><table style= 'background-color: #323232; padding: 15px; border-radius:25px; width:100%;' align='center'> <tr><td colspan='3'><textarea id='text' rows='6' cols='50' style= 'width:100%'></textarea></td></tr><tr><td style= 'text-align: center;'> Your Name:</td><td style= 'text-align: center;'> <input id='name' type='text' name='name' placeholder='Enter your name here'></td><td style= 'text-align: center;' onclick='showcomments()'>button</td></tr></table></div>";
+//   document.getElementById("menu").innerHTML = str;
+//   var yourname = document.getElementById("name").value;
+//   var yourtext = document.getElementById("text").value;
+//   var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/comment?name={NAME}";
+//   var xhr = new XMLHttpRequest();
+//   xhr.open("POST", uri, true);
+//   xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+//   xhr.onload = function() {}
+//   xhr.send(JSON.stringify(objectToPost));
 
+// }
+  function getComments()
+  {
+    var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/htmlcomments";
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", uri, true);
+    xhr.setRequestHeader("Accept", "application/html");
+    xhr.onload = function()
+    {
+      var response = xhr.responseText;
+      showComments(response);
+    }
+    xhr.send(null);
+  }
+
+// function getComments(){
+//     var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/htmlcomments";
+//     var xhr = new XMLHttpRequest();
+//     xhr.open("GET", uri, true);
+//     xhr.setRequestHeader("Accept", "application/json");
+//     xhr.onload = function()
+//     {
+//       var response = JSON.parse(xhr.responseText);
+//       showComments(response);
+//     }
+//     xhr.send(null);
+//  }
+
+// function showComments(comments){
+// 	var content = "<p>";
+// 	for (var i = 0; i <comments.length; i++)
+// 	{
+// 		var comment = comments[i];
+// 		content += comment + "<br/>"
+// 	}
+// 	content += "</p>"
+
+// 	document.getElementById("displayText").innerHTML = content;
+// }
+
+function showComments(){
+     document.getElementById("displayText").innerHTML='<object type="text/html" data="http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/htmlcomments" ></object>';
 }
+
 
 function postComment()
 {
@@ -45,20 +88,6 @@ function postComment()
   xhr.send("TESTING COMMENT")
 }
 
-
-  // function getBooks()
-  // {
-  //   var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/booklist";
-  //   var xhr = new XMLHttpRequest();
-  //   xhr.open("GET", uri, true);
-  //   xhr.setRequestHeader("Accept", "application/json");
-  //   xhr.onload = function()
-  //   {
-  //     var response = JSON.parse(xhr.responseText);
-  //     showBooks(response);
-  //   }
-  //   xhr.send(null);
-  // }
 
   function getBooks()
   {
@@ -164,4 +193,6 @@ function postComment()
     var bookId = item.value;
     window.open("http://redsox.uoa.auckland.ac.nz/BC/Closed/Service.svc/bookbuy?id=" +bookId, "_blank");
 }
+
+
 
