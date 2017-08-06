@@ -139,25 +139,19 @@ function postComment()
 
   function showBlurays(blurays)
   {	
-    var tableContent = "";
+    var tableContent = "<table>";
     for (var i = 0; i < blurays.length; ++i)
     {
       var record = blurays[i];
 
-      if (i & 1 == 1)
-      { // odd row
-        tableContent += "<trclass='orderOdd'>";
-      }
+ 
 
-      else
-      { // even row
-        tableContent += "<trclass='orderEven'>";
-      }
-		
- 	tableContent += "<td><img src='http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/brimg?id=" + record.Id + 
-      "'/></td>" +"<td class=\"centerText\">" + record.Title + 
-      "</td>" + "<td> <button type=\"button\" onclick=\"alert('Hello world!')\">Buy Now!<\/button><\/td>"+"<br/>";
+      tableContent += "<tr> <td><img src='http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/brimg?id=" + record.Id + 
+      "' </td>" +"<td>" + record.Title + 
+      "</td>" + "<td> <button type=\"button\" onclick=\"alert('Hello world!')\">Buy Now!</button></td>"+"</tr>";
     }
+    tableContent += "</table>"
+    debugger;
     document.getElementById("displayText").innerHTML = tableContent;
 
   }

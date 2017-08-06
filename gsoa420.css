@@ -1,11 +1,16 @@
 hr {border-width: 2px; border-style: solid; color:white;}
 body { background-image: url("bg.png");
 background-attachment: fixed;}
-table{width: 100%;
-table-layout: fixed; border-spacing: 10px;}
-td, th {color:white;}
-.text{ color: white;}
-.foot{color: white;
+
+table
+{
+width: 100%;
+table-layout: fixed; border-spacing: 10px;
+font-family: Arial;
+}
+/*td, th {color:white;}*/
+/*.text{ color: white;}*/
+.foot{color: black;
         bottom: 0px;
         text-align: center;}
 
@@ -40,25 +45,27 @@ td, th {color:white;}
 /*
 table {
         }
-        td {
-            padding: 2px;
-            border: 1px solid #dadada;
-        }
+        
         .EvenRow {
             background-color: lightgrey;
         }*/
 
-#myInput {
-    background-image: url('/css/searchicon.png'); /* Add a search icon to input */
-    background-position: 10px 12px; /* Position the search icon */
-    background-repeat: no-repeat; /* Do not repeat the icon image */
-    width: 100%; /* Full-width */
-    font-size: 16px; /* Increase font-size */
-    padding: 12px 20px 12px 40px; /* Add some padding */
-    border: 1px solid #ddd; /* Add a grey border */
-    margin-bottom: 12px; /* Add some space below the input */
+
+
+td {
+	border:0px;
+	text-align:center;
+	padding:5px;
+	font-size: 20px;
+	color: black;
 }
 
-.centerText{
-   text-align: center;
+button {
+     width: 30%;
+     height: 30%;
+     border: 2px solid #a1a1a1;
+     border-radius: 35px;
+     font-size: 20px;
+	font-family: Arial
+	color: white;
 }

@@ -1,9 +1,47 @@
-tableContent += "";
+<!DOCTYPE html> 
+<html>
+<head>
+<style>
+
+td {
+	border:0px;
+	text-align:center;
+	padding:5px;
+	font-size: 20px;
+	font-family: Arial
+}
+button { 
+	text-align:center;	
+  	width:200px;
+  	font-size: 20px;
+	font-family: Arial 
+} 
+
+table
+{ 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*table, th, td {
+    border: 1px solid black;
+}*/
+
+</style>
 
 
+<table>
+<td>
+	<img src="brimg.jpeg">
+</td>
+<td>
+	record.AuthorInitials + " " + record.AuthorSurname + "-"+ record.Title
+</td>
+<td> 
+	<button type="button" onclick="alert('Hello world!')">Buy Now!</button>
+</td>
+<br/>
+</table>
 
-
-
-<td><img src="http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/bookimg?id=" + record.Id
-</td> + record.AuthorInitials + " " + record.AuthorSurname + " - "+ "<td>" + record.Title + 
-      "</td>" + "<td> <button type=\"button\" onclick=\"alert('Hello world!')\">Buy Now!<\/button><\/td>"+"<br/>
+</head>
+</html>
