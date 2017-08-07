@@ -1,3 +1,5 @@
+var mydocument;
+
 function home()
 {
   var str = "<h1 style='color:white;'>La Boutique Cassée</h1> <hr style = 'border-width: 2px; border-style: solid; color:white;'></hr> <p style='color:white;'> Welcome to La Boutique Cassée. La Boutique Cassée is an online shop selling books and blurays.</p>";
@@ -31,19 +33,19 @@ function myFunction()
 //   xhr.send(JSON.stringify(objectToPost));
 
 // }
-  function getComments()
-  {
-    var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/htmlcomments";
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", uri, true);
-    xhr.setRequestHeader("Accept", "application/html");
-    xhr.onload = function()
-    {
-      var response = xhr.responseText;
-      showComments(response);
-    }
-    xhr.send(null);
-  }
+  // function getComments()
+  // {
+  //   var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/htmlcomments";
+  //   var xhr = new XMLHttpRequest();
+  //   xhr.open("GET", uri, true);
+  //   xhr.setRequestHeader("Accept", "application/html");
+  //   xhr.onload = function()
+  //   {
+  //     var response = xhr.responseText;
+  //     showComments(response);
+  //   }
+  //   xhr.send(null);
+  // }
 
 // function getComments(){
 //     var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/htmlcomments";
@@ -58,39 +60,75 @@ function myFunction()
 //     xhr.send(null);
 //  }
 
-// function showComments(comments){
-// 	var content = "<p>";
-// 	for (var i = 0; i <comments.length; i++)
-// 	{
-// 		var comment = comments[i];
-// 		content += comment + "<br/>"
-// 	}
-// 	content += "</p>"
+function showComments(comments){
+	var content = "<p>";
+	for (var i = 0; i <comments.length; i++)
+	{
+		var comment = comments[i];
+		content += comment + "<br/>"
+	}
+	content += "</p>"
 
-// 	document.getElementById("displayText").innerHTML = content;
-// }
-
-function showComments(){
-     document.getElementById("displayText").innerHTML='<object type="text/html" data="http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/htmlcomments" ></object>';
+	document.getElementById("displayText").innerHTML = content;
 }
 
+// function showComments(){
+// 	var commentBox = "<form action=&#34;/postComment();>First name:<br><input type=&#34;text&#34; name=&#34;Comment&#34; value=&#34;Mickey&#34;><br>Last name:<br><input type=&#34;text&#34; name=&#34;lastname&#34; value=&#34;Mouse&#34;><br><br><input type=&#34;submit&#34; value=&#34;Submit&#34;></form> "
+//      document.getElementById("displayText").innerHTML='<object type="text/html" data="http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/htmlcomments" ></object>';
+// }
 
-function postComment()
+//works
+
+function comment()
 {
+	debugger;
   var xhr = new XMLHttpRequest();
-  var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/comment?name=" + '"testing"';
+  var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/comment?name=" + "fran";
   xhr.open("POST", uri, true);
   xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   xhr.onload = function(){
   	var comment = document.getElementById("displayText");
   	comment.innerHTML= xhr.responseText;
   }
-  xhr.send("TESTING COMMENT")
+  xhr.send('"comment works"')
+}
+
+function readComment()
+{	
+
+	
+		var str = "<p> <input name=\"nameEntry\" type=\"text\" value=\"Enter name here\" /></p> <p> <input name=\"commentEntry\" type=\"text\" value=\"Enter comment here\" /></p> <p> <input name=\"submitButton\" type=\"button\" onclick=\"postComment()\" value=\"Submit\" /></p>";  
+		document.getElementById("displayText").innerHTML = str;
+
+
+}
+
+function postComment()
+{
+	//
+	//debugger;
+
+	var xhr = new XMLHttpRequest();
+	var name = document.getElementsByName("nameEntry")[0].value;
+	var comment = document.getElementsByName("commentEntry")[0].value;
+
+	
+	var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/comment?name=" + name;
+	//debugger;
+	xhr.open("POST",uri,true);
+	xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	// xhr.onload = function () {
+	// 	// var comment = document.getElementById("displayText");
+ //  // 	comment.innerHTML= xhr.responseText;
+	// }
+	xhr.send(JSON.stringify(comment));
+	//document.getElementById("displayText").innerHTML = str;
 }
 
 
   function getBooks()
-  {
+  {	
+
     var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/booklist";
     var xhr = new XMLHttpRequest();
     xhr.open("GET", uri, true);
@@ -119,8 +157,10 @@ function postComment()
 
   function showBooks(books)
   {	
-  	
+  	//var tableContent = "<form><input type=\”text\” placeholder=\”Search.\” required>  <input type=\”button\” value=\”Search\”></form>";    
+
     var tableContent = "<table>";
+    //var search = 
     for (var i = 0; i < books.length; ++i)
     {
       var record = books[i];
