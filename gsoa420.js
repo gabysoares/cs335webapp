@@ -1,7 +1,9 @@
-var mydocument;
+//var mydocument;
+var isBooks = false;
 
 function home()
-{
+{	
+	showSearchBar(false);
   var str = "<h1 style='color:white;'>La Boutique Cassée</h1> <hr style = 'border-width: 2px; border-style: solid; color:white;'></hr> <p style='color:white;'> Welcome to La Boutique Cassée. La Boutique Cassée is an online shop selling books and blurays.</p>";
   document.getElementById("displayText").innerHTML = str;
 }
@@ -96,7 +98,8 @@ function comment()
 function readComment()
 {	
 
-	
+		showSearchBar(false);
+
 		var str = "<p> <input name=\"nameEntry\" type=\"text\" value=\"Enter name here\" /></p> <p> <input name=\"commentEntry\" type=\"text\" value=\"Enter comment here\" /></p> <p> <input name=\"submitButton\" type=\"button\" onclick=\"postComment()\" value=\"Submit\" /></p>";  
 		document.getElementById("displayText").innerHTML = str;
 
@@ -128,7 +131,8 @@ function postComment()
 
   function getBooks()
   {	
-
+  	showSearchBar(true);
+  	isBooks = true;
     var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/booklist";
     var xhr = new XMLHttpRequest();
     xhr.open("GET", uri, true);
@@ -141,9 +145,20 @@ function postComment()
     xhr.send(null);
   }
 
-  function searchBooks(keyword)
-  {
-    var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/booksearch?term=" + keyword;
+  function search()
+  {	
+  	 //debugger;
+  	 //var uri = 
+  	var keyword = document.getElementsByName("searchBox")[0].value;
+
+  	if (isBooks === true){
+  		var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/booksearch?term=" + keyword;
+  	}
+    
+    else{
+    	var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/brsearch?term=" + keyword;
+    }
+    
     var xhr = new XMLHttpRequest();
     xhr.open("GET", uri, true);
     xhr.setRequestHeader("Accept", "application/json");
@@ -178,7 +193,9 @@ function postComment()
  }
 
   function getBlurays()
-  {
+  {	
+  	isBooks = false;
+  	showSearchBar(true);
     var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/brlist";
     var xhr = new XMLHttpRequest();
     xhr.open("GET", uri, true);

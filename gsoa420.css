@@ -37,6 +37,12 @@ font-family: Arial;
     color: black;
 }
 
+/*.topnav input {
+    
+}*/
+
+
+
 /* Hide the link that should open and close the topnav on small screens */
 .topnav .icon {
     display: none;
@@ -50,7 +56,39 @@ table {
             background-color: lightgrey;
         }*/
 
+.search button{
 
+    background-color: #ddd;
+    color: black;
+    float: right;
+    display: block;
+    color: black;
+    text-align: center;
+    /*padding: 14px 16px;*/
+    text-decoration: none;
+    font-size: 17px;
+    height:20px;
+    width:100px;
+    padding-bottom:20px;
+    
+}
+
+.search input{
+	background-color: #ddd;
+    color: black;
+    float: right;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.search table{
+	width: 20%;
+	margin: auto;
+}
 
 td {
 	border:0px;

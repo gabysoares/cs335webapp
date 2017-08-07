@@ -6,7 +6,7 @@
       <link rel="stylesheet" type="text/css" href="gsoa420.css"/>
       <script src="gsoa420.js"></script>
    </head>
-   <body>
+   <body onload = "home();">
       <!-- <p id="demo">JavaScript can change HTML content.</p> -->
       <img src="http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/logo" alt="logo" style="width:128px;height:128px;">
   
@@ -17,17 +17,36 @@
          <a onclick='getBlurays()'>Blurays</a>
          <a onclick='register()'>Register</a>
          <a onclick='readComment()''>Comments</a>
+         
       </div>
+      <div class = "search">
+      <table name = "searchTable">
+         	<td>
+         	<input type="text" name= "searchBox">
+         	</td>
+         	<td>
+         		 <button type="button" name = "searchButton" onclick="search()">Search</button>
+         	</td>
+
+         </table>
+      </div>   
       <div id = "displayText">
          This will change
          <p class="foot">Copyright &#169; Gabriella Soares</p>
       </div>
-     <!--  <div>
-      </div> -->
-<!--      <script>
-   
 
-     </script> -->
+<script>
+function showSearchBar(showButton) {
+    var x = document.getElementsByName('searchTable')[0];
+    if (showButton === true) {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+   
+}
+</script>
+
 
 
    </body>
