@@ -8,13 +8,12 @@ width: 100%;
 table-layout: fixed; border-spacing: 10px;
 font-family: Arial;
 }
-/*td, th {color:white;}*/
-/*.text{ color: white;}*/
+
 .foot{color: black;
         bottom: 0px;
         text-align: center;}
 
-
+/*https://www.w3schools.com/howto/howto_js_topnav_responsive.asp*/
 .topnav {
     background-color: #0F487E;
     overflow: hidden;
@@ -37,24 +36,12 @@ font-family: Arial;
     color: black;
 }
 
-/*.topnav input {
-    
-}*/
-
-
 
 /* Hide the link that should open and close the topnav on small screens */
 .topnav .icon {
     display: none;
 }
 
-/*
-table {
-        }
-        
-        .EvenRow {
-            background-color: lightgrey;
-        }*/
 
 .search button{
 
