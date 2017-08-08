@@ -147,19 +147,11 @@ function postComment()
 
   function search()
   {	
-  	 //debugger;
-  	 //var uri = 
   	var keyword = document.getElementsByName("searchBox")[0].value;
 
   	if (isBooks === true){
   		var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/booksearch?term=" + keyword;
-  	}
-    
-    else{
-    	var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/brsearch?term=" + keyword;
-    }
-    
-    var xhr = new XMLHttpRequest();
+  		var xhr = new XMLHttpRequest();
     xhr.open("GET", uri, true);
     xhr.setRequestHeader("Accept", "application/json");
     xhr.onload = function()
@@ -167,12 +159,27 @@ function postComment()
       var response = JSON.parse(xhr.responseText);
       showBooks(response);
     }
+  	}
+    
+    else{
+    	var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/brsearch?term=" + keyword;
+    	var xhr = new XMLHttpRequest();
+    xhr.open("GET", uri, true);
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.onload = function()
+    {
+      var response = JSON.parse(xhr.responseText);
+      showBlurays(response);
+    }
+    }
+    
+    
     xhr.send(null);
   }
 
   function showBooks(books)
   {	
-  	//var tableContent = "<form><input type=\”text\” placeholder=\”Search.\” required>  <input type=\”button\” value=\”Search\”></form>";    
+  	
 
     var tableContent = "<table>";
     //var search = 
