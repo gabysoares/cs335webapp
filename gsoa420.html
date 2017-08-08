@@ -12,7 +12,6 @@
   
       <div class="topnav" id="myTopnav">
          <a onclick='home()'>Home</a>
-         <!-- <a onclick='document.getElementById("displayText").innerHTML = "This is about"'>About</a> -->
          <a onclick='getBooks()'>Books</a>
          <a onclick='getBlurays()'>Blurays</a>
          <a onclick='register()'>Register</a>
@@ -32,10 +31,13 @@
       </div>   
       <div id = "displayText">
          This will change
-         <p class="foot">Copyright &#169; Gabriella Soares</p>
+         <!-- <p class="foot">Copyright &#169; Gabriella Soares</p> -->
+      </div>
+      <div id = "commentArea">
       </div>
 
 <script>
+// https://www.w3schools.com/howto/howto_js_toggle_hide_show.asp
 function showSearchBar(showButton) {
     var x = document.getElementsByName('searchTable')[0];
     if (showButton === true) {
@@ -45,6 +47,18 @@ function showSearchBar(showButton) {
     }
    
 }
+
+function showCommentBox(commentBox) {
+    var x = document.getElementById('commentArea')[0];
+    if (commentBox === true) {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+   
+}
+
+
 </script>
 
 
